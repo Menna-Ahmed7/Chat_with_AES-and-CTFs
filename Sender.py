@@ -53,18 +53,18 @@ print("Got a connection from {}".format(addr))
 #-----------exchanging elgamal keys-----------
 client_socket.send(str(public_key_gamal).encode())
 public_other_gamal = int(client_socket.recv(1024).decode())
-print(public_other_gamal)
+# print(public_other_gamal)
 
 #-----------sending DH public key after signing by Elgamal digital signature-----------
 #q=19
 #q-1=18
 M=public_key_DH
 m=sha1(M)
-print(type(m))
+# print(type(m))
 K=11 #gcd(11,18)=1
 K_inverse=5
 S1,S2=gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,19,m)
-print(S1,S2)
+# print(S1,S2)
 combined_data = str(S1) +',' + str(S2)  +','+str(public_key_DH) # Concatenate strings (digital Signature and public key)
 client_socket.send(combined_data.encode())
 #----- recieving DH public key and verifying -----------
@@ -73,7 +73,7 @@ data_parts = S1_S2_combined.split(",")
 S1_other = int(data_parts[0])
 S2_other = int(data_parts[1])
 public_other_DH=int(data_parts[2])
-print(S1_other,S2_other)
+# print(S1_other,S2_other)
 
 # if(verify_signatures(alpha_DH,m,23,public_other_gamal,S1_other,S2_other)==False):
 #     print('bad')
@@ -82,7 +82,7 @@ print(S1_other,S2_other)
 #-----------generate 256-bit AES key-----------
 DH_shared_key=pow(public_other_DH,private_key_DH)%23
 key=generate_key(DH_shared_key)
-print(key)
+# print(key)
  
 #-----------Chatting-----------
 sender_thread = threading.Thread(target=send, args=(client_socket,key,))
