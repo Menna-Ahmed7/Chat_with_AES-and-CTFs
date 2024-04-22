@@ -55,21 +55,21 @@ M=public_key_DH
 m=sha1(M)
 K=13 #gcd(13,18)=1
 K_inverse=7
-S1,S2=gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,19,m)
+S1,S2=gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,m)
 # print(S1,S2)
 #----- recieving DH public key and verifying -----------
 S1_S2_combined = client_socket.recv(1024).decode()
 data_parts = S1_S2_combined.split(",")
-S1_other = int(data_parts[0])
-S2_other = int(data_parts[1])
-public_other_DH=int(data_parts[2])
+S1_other = int(data_parts[1])
+S2_other = int(data_parts[2])
+public_other_DH=int(data_parts[0])
 # print(S1_other,S2_other)
-
-# if(verify_signatures(alpha_DH,m,23,public_other_gamal,S1_other,S2_other)==False):
-#     print('bad')
-#     client_socket.close()
+m_other=sha1(public_other_DH)
+if(verify_signatures(alpha_gamal,m_other,19,public_other_gamal,S1_other,S2_other)==False):
+    print('bad')
+    client_socket.close()
 #sending
-combined_data = str(S1) +',' + str(S2)  +','+str(public_key_DH) # Concatenate strings
+combined_data = str(public_key_DH)+','+str(S1) +',' + str(S2)  # Concatenate digital signature to messgae
 client_socket.send(combined_data.encode())
 
 #-----------generate 256-bit AES key-----------
