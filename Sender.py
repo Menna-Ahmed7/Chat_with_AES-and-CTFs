@@ -27,7 +27,7 @@ def recieve(send_socket,key):
         data = client_socket.recv(1024)
         # if not data:
         #     break
-        print("\n Another Person:", decrypt(data,key))
+        print("Alice:", decrypt(data,key))
 
 
 # Create a socket object
@@ -76,17 +76,19 @@ public_other_DH=int(data_parts[0])
 # print(S1_other,S2_other)
 m_other=sha1(public_other_DH)
 if(verify_signatures(alpha_gamal,m_other,19,public_other_gamal,S1_other,S2_other)==False):
-    print('bad')
+    print('Invalid digital signature \n')
     client_socket.close()
+else:
+    print("Valid Digital Signature.... Start Chatting \n")
 
-#-----------generate 256-bit AES key-----------
-DH_shared_key=pow(public_other_DH,private_key_DH)%23
-key=generate_key(DH_shared_key)
-# print(key)
- 
-#-----------Chatting-----------
-sender_thread = threading.Thread(target=send, args=(client_socket,key,))
-reciever_thread = threading.Thread(target=recieve, args=(client_socket,key,))
+    #-----------generate 256-bit AES key-----------
+    DH_shared_key=pow(public_other_DH,private_key_DH)%23
+    key=generate_key(DH_shared_key)
+    # print(key)
+    
+    #-----------Chatting-----------
+    sender_thread = threading.Thread(target=send, args=(client_socket,key,))
+    reciever_thread = threading.Thread(target=recieve, args=(client_socket,key,))
 
-sender_thread.start()
-reciever_thread.start()
+    sender_thread.start()
+    reciever_thread.start()

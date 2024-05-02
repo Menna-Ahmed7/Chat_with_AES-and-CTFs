@@ -25,8 +25,8 @@ def mod_pow(a, b, n):
 def sha1(secret_key):
     h = hashlib.sha1(str(secret_key).encode('utf-8'))
     hex_digest = h.hexdigest()
-    truncated_str = hex_digest[:8]  # Take the first 'num_chars' characters
-    return int(truncated_str, 16) 
+    # truncated_str = hex_digest[:8]  # Take the first 'num_chars' characters
+    return int(hex_digest, 16) 
 
 def gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,m):
     # pow(alpha_gamal,K) % q_gamal
