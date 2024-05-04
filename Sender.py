@@ -1,5 +1,5 @@
 from AES_Cipher import encrypt ,generate_key,decrypt 
-from utilties import read_from_file,generate_public_key,gamal_digital_signature_for_DH_public_key,verify_signatures,sha1
+from utilties import read_from_file,generate_public_key,gamal_digital_signature_for_DH_public_key,verify_signatures,sha1,modinv
 import socket
 import threading
 #--------reading q and alpha-----------
@@ -62,7 +62,7 @@ M=public_key_DH
 m=sha1(M)
 # print(type(m))
 K=11 #gcd(11,18)=1
-K_inverse=5
+K_inverse=modinv(K,q_gamal-1)
 S1,S2=gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,m)
 # print(S1,S2)
 combined_data = str(public_key_DH)+','+str(S1) +',' + str(S2)  # Concatenate digital signature to messgae

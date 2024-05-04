@@ -6,6 +6,20 @@ def read_from_file(file_path):
         lines = file.readlines()
     return [int(line.rstrip()) for line in lines] #rstrip() method removes any trailing whitespace characters, 
                                                 #including the newline (\n) in this case.
+def modinv(k, q):
+    g, x, y = extended_euclidean_algorithm(k, q)
+    if g != 1:
+        return None  # modular inverse does not exist
+    else:
+        return x % q
+
+def extended_euclidean_algorithm(a, b):
+    x, y, u, v = 0, 1, 1, 0
+    while a != 0:
+        q, r = divmod(b, a)
+        m, n = x - u * q, y - v * q
+        b, a, x, y, u, v = a, r, u, v, m, n
+    return b, x, y
 
 def generate_public_key (q,alpha,private_key):
     # pow(alpha,private_key) % q

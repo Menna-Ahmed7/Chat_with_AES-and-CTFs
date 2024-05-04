@@ -1,6 +1,6 @@
 # Import socket module 
 from AES_Cipher import encrypt ,generate_key,decrypt 
-from utilties import read_from_file,generate_public_key,gamal_digital_signature_for_DH_public_key,sha1,verify_signatures
+from utilties import read_from_file,generate_public_key,gamal_digital_signature_for_DH_public_key,sha1,verify_signatures,modinv
 import socket	
 import threading
 
@@ -54,7 +54,7 @@ client_socket.send(str(public_key_gamal).encode())
 M=public_key_DH
 m=sha1(M)
 K=13 #gcd(13,18)=1
-K_inverse=7
+K_inverse=modinv(K,q_gamal-1)
 S1,S2=gamal_digital_signature_for_DH_public_key(K,K_inverse,alpha_gamal,q_gamal,private_key_gamal,m)
 # print(S1,S2)
 #----- recieving DH public key and verifying -----------
