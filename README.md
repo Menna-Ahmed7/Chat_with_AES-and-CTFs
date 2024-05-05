@@ -1,11 +1,11 @@
 # Chat_with_AES
 Cryptography Project
 ## How to run?
-1. 
+1. Clone the repo
 ```
 git clone [https://github.com/marwan995/Detecta.git]
 ```
-2. 
+2. Needed Installation
 ```
 pip install pycryptodome
 ```
@@ -14,3 +14,7 @@ pip install pycryptodome
 python .\Sender.py
 ```
 4. Open another terminal
+```
+python .\Reciever.py
+```
+Now you can start chatting
