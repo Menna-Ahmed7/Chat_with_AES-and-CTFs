@@ -65,7 +65,7 @@ S2_other = int(data_parts[2])
 public_other_DH=int(data_parts[0])
 # print(S1_other,S2_other)
 m_other=sha1(public_other_DH)
-if(verify_signatures(alpha_gamal,m_other,19,public_other_gamal,S1_other,S2_other)==False):
+if(verify_signatures(alpha_gamal,m_other,q_gamal,public_other_gamal,S1_other,S2_other)==False):
     print('Invalid digital signature \n')
     client_socket.close()
 
@@ -76,7 +76,7 @@ else:
     client_socket.send(combined_data.encode())
 
     #-----------generate 256-bit AES key-----------
-    DH_shared_key=pow(public_other_DH,private_key_DH)%23
+    DH_shared_key=pow(public_other_DH,private_key_DH)%q_DH
     key=generate_key(DH_shared_key)
     # print(key)
 
