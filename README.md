@@ -1,5 +1,5 @@
 # Chat_with_AES
-Cryptography Project
+Chat based on socket communication and applying the AES encryption/decryption over sent/recieved messages 
 ## How to run?
 1. Clone the repo
 ```
