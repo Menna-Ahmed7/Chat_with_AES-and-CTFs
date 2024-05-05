@@ -3,7 +3,7 @@ Chat based on socket communication and applying the AES encryption/decryption ov
 ## How to run?
 1. Clone the repo
 ```
-git clone [https://github.com/Menna-Ahmed7/Chat_with_AES.git]
+git clone https://github.com/Menna-Ahmed7/Chat_with_AES.git
 ```
 2. Needed Installation
 ```
