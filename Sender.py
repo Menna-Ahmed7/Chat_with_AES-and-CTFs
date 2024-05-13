@@ -16,6 +16,9 @@ def send(client_socket,key):
     while True:
         # Send a response to the client
         message = input("")
+        if message=="end":
+            client_socket.close()
+            break
         client_socket.send(encrypt(message,key))
 
     # Close the connection with the client
