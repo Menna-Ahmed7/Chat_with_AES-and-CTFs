@@ -3,11 +3,11 @@ Chat based on socket communication and applying the AES encryption/decryption ov
 ## How to run?
 1. Clone the repo
 ```
-git clone [https://github.com/marwan995/Detecta.git]
+git clone https://github.com/Menna-Ahmed7/Chat_with_AES.git
 ```
 2. Needed Installation
 ```
-pip install pycryptodome
+pip install pycryptodomex
 ```
 3. Open terminal
 ```
