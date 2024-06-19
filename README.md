@@ -1,8 +1,8 @@
 # Description
 ### This project is mainly composed of 2 parts:
-### * Chat with AES:
-* Chat based on socket communication and applying the AES encryption/decryption over sent/recieved messages
-### * CTFs
+* Chat with AES:
+  * Chat based on socket communication and applying the AES encryption/decryption over sent/recieved messages
+* CTFs
 # How to run the Chat?
 1. Clone the repo
 ```
