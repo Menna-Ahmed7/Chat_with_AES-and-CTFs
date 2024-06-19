@@ -1,9 +1,9 @@
-# Description
+## Description
 ### This project is mainly composed of 2 parts:
 * Chat with AES:
   * Chat based on socket communication and applying the AES encryption/decryption over sent/recieved messages
 * CTFs
-# How to run the Chat?
+## How to run the Chat?
 1. Clone the repo
 ```
 git clone https://github.com/Menna-Ahmed7/Chat_with_AES.git
@@ -22,7 +22,7 @@ python .\Reciever.py
 ```
 Now you can start chatting
 
-# Contributors <a name = "Contributors"></a>
+## Contributors <a name = "Contributors"></a>
 
 <table>
   <tr>
